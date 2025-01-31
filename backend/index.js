@@ -23,7 +23,13 @@ const queryRoutes = require("./routes/queries");
 app.use(bodyparser.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(cookieparser());
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 //Routes Middlewares
 app.use("/api", authRoutes);
